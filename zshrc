@@ -14,6 +14,8 @@ alias ll='ls -lF'
 alias lla='ls -lAF'
 alias la='ls -A'
 alias l='ls -CF'
+alias cddot='cd ~/.dotfiles'
+alias cdfie='cd ~/workspace/nofie'
 alias cc='claude'
 
 ### disable flow control ###
