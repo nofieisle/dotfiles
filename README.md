@@ -29,17 +29,26 @@ git commit -m "initial dotfiles"
 ### 管理したいファイルの存在を確認
 * `ls -la ~/.vimrc`
 * `ls -la ~/.zshrc`
+* `ls -la ~/.config/git/ignore`
 * `ls -la ~/.config/tmux/tmux.conf`
 
 ### .dotfiles に移動
 ドットを外して管理するのが一般的
 * `mv ~/.vimrc ~/.dotfiles/vimrc`
 * `mv ~/.zshrc ~/.dotfiles/zshrc`
+* `mv ~/.config/git/ignore ~/.dotfiles/gitignore_global`
 * `mv ~/.config/tmux/tmux.conf ~/.dotfiles/tmux.conf`
 
 ### シンボリックリンクを作る
 * `ln -s ~/.dotfiles/vimrc ~/.vimrc`
 * `ln -s ~/.dotfiles/zshrc ~/.zshrc`
+
+#### gitignore_global 用
+* `ls ~/.config/git`
+* `mkdir -p ~/.config/git`
+* `ln -s ~/.dotfiles/gitignore_global ~/.config/git/ignore`
+* `git config --global core.excludesfile ~/.config/git/ignore`
+* `git config --global core.excludesfile`
 
 #### tmux.conf 用
 * `ls ~/.config/tmux`
