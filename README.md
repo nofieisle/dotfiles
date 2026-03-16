@@ -1,74 +1,99 @@
 # .dotfiles
 
-ホームディレクトリでドットファイルを管理する。
+macOS 環境のドットファイルを Git で管理するためのリポジトリ。
 
-## ◯ 準備
-### .dotfiles 作成
-`mkdir ~/.dotfiles`
+## 管理ファイル一覧
 
-### ~/.dotfiles 用の .gitignore を作成
-1. `.dotfiles` に移動: `cd ~/.dotfiles`
-2. `.gitignore` を作る: `touch .gitignore`
-3. 中身を書く: `vim .gitignore`
-```
-.DS_Store
-*.swp
-*.swo
-*.tmp
-*.bak
-```
+| ファイル | 元の配置 | 用途 |
+|---|---|---|
+| `vimrc` | `~/.vimrc` | Vim 設定 |
+| `zshrc` | `~/.zshrc` | Zsh 設定 |
+| `tmux.conf` | `~/.config/tmux/tmux.conf` | tmux 設定 |
+| `gitignore_global` | `~/.config/git/ignore` | グローバル gitignore |
 
-### Git 初期化
-```
+## 初回セットアップ
+
+### 1. リポジトリを作成
+
+```sh
+mkdir ~/.dotfiles
+cd ~/.dotfiles
 git init
-git add .gitignore
+```
+
+### 2. .gitignore を作成
+
+```sh
+vim .gitignore
+```
+
+### 3. 既存のドットファイルをリポジトリに移動
+
+ドットを外した名前で管理するのが一般的。
+
+```sh
+mv ~/.vimrc ~/.dotfiles/vimrc
+mv ~/.zshrc ~/.dotfiles/zshrc
+mv ~/.config/tmux/tmux.conf ~/.dotfiles/tmux.conf
+mv ~/.config/git/ignore ~/.dotfiles/gitignore_global
+```
+
+### 4. シンボリックリンクを作成
+
+元の場所からリポジトリ内のファイルを参照するようにする。
+
+```sh
+# vimrc / zshrc
+ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/zshrc ~/.zshrc
+
+# tmux.conf
+mkdir -p ~/.config/tmux
+ln -s ~/.dotfiles/tmux.conf ~/.config/tmux/tmux.conf
+
+# gitignore_global
+mkdir -p ~/.config/git
+ln -s ~/.dotfiles/gitignore_global ~/.config/git/ignore
+git config --global core.excludesfile ~/.config/git/ignore
+```
+
+### 5. 確認
+
+シンボリックリンクが正しく張られていることを確認する。
+
+```sh
+ls -l ~/.vimrc                  # -> ~/.dotfiles/vimrc
+ls -l ~/.zshrc                  # -> ~/.dotfiles/zshrc
+ls -l ~/.config/tmux/tmux.conf  # -> ~/.dotfiles/tmux.conf
+ls -l ~/.config/git/ignore      # -> ~/.dotfiles/gitignore_global
+```
+
+### 6. 設定を反映
+
+```sh
+source ~/.zshrc
+```
+
+> vimrc は Vim 起動時に自動で読み込まれるため、再読み込みは不要。
+
+### 7. Git に追加
+
+```sh
+cd ~/.dotfiles
+git add .
 git commit -m "initial dotfiles"
 ```
 
-## ◯ 設定手順
-### 管理したいファイルの存在を確認
-* `ls -la ~/.vimrc`
-* `ls -la ~/.zshrc`
-* `ls -la ~/.config/git/ignore`
-* `ls -la ~/.config/tmux/tmux.conf`
+## 新しいドットファイルを追加するには
 
-### .dotfiles に移動
-ドットを外して管理するのが一般的
-* `mv ~/.vimrc ~/.dotfiles/vimrc`
-* `mv ~/.zshrc ~/.dotfiles/zshrc`
-* `mv ~/.config/git/ignore ~/.dotfiles/gitignore_global`
-* `mv ~/.config/tmux/tmux.conf ~/.dotfiles/tmux.conf`
+```sh
+# 1. 既存ファイルをリポジトリに移動（ドットを外す）
+mv ~/.xxxx ~/.dotfiles/xxxx
 
-### シンボリックリンクを作る
-* `ln -s ~/.dotfiles/vimrc ~/.vimrc`
-* `ln -s ~/.dotfiles/zshrc ~/.zshrc`
+# 2. シンボリックリンクを作成
+ln -s ~/.dotfiles/xxxx ~/.xxxx
 
-#### gitignore_global 用
-* `ls ~/.config/git`
-* `mkdir -p ~/.config/git`
-* `ln -s ~/.dotfiles/gitignore_global ~/.config/git/ignore`
-* `git config --global core.excludesfile ~/.config/git/ignore`
-* `git config --global core.excludesfile`
-
-#### tmux.conf 用
-* `ls ~/.config/tmux`
-* `mkdir -p ~/.config/tmux`
-* `ln -s ~/.dotfiles/tmux.conf ~/.config/tmux/tmux.conf`
-
-### 確認
-* `ls -l ~/.vimrc`
-	* `/Users/username/.vimrc -> /Users/username/.dotfiles/vimrc`
-* `ls -l ~/.zshrc`
-	* `/Users/username/.zshrc -> /Users/username/.dotfiles/zshrc`
-* `ls -l ~/.config/tmux`
-	* `tmux.conf -> /Users/username/.dotfiles/tmux.conf`
-
-### 設定を再読み込み
-* `source ~/.zshrc`
-* vimrc は vim 起動時に自動で読み込まれるので、再読み込み不要
-
-## ◯ Git管理に追加
-```
+# 3. Git に追加
 cd ~/.dotfiles
 git add xxxx
 git commit -m "add xxxx"
