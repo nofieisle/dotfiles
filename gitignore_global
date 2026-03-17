@@ -7,6 +7,7 @@ Thumbs.db
 .env
 .env.*
 *.local
+**/.claude/settings.local.json
 
 ## Temporary / backup
 *.log
@@ -14,4 +15,7 @@ Thumbs.db
 ## Dependencies
 node_modules/
 
-**/.claude/settings.local.json
+## --- Personal files ---
+_MYNOTE.md
+_DRAFT.md
+
