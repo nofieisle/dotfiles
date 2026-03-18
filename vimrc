@@ -11,17 +11,26 @@ set number
 "行番号の色
 highlight lineNr ctermfg=8
 
+"相対番号を表示
+"set relativenumber
+
 "現在の行を強調表示
 set cursorline
 
 "折り返し表示
-set wrap
+set nowrap
 
 "対応する括弧を表示
 set showmatch
 
 "対応する括弧に <> を追加
 set matchpairs+=<:>
+
+"タブや行末の半角スペース、改行などを可視化
+"set list
+
+"どの文字で可視化するかを設定
+"set listchars=tab:>.,trail:⋰
 
 "常にステータス行を表示
 set laststatus=2
@@ -57,6 +66,15 @@ nnoremap k gk
 "検索語をハイライト
 set hlsearch
 
+"検索時に大文字小文字を区別しない
+"set ignorecase
+
+"検索時に大文字と小文字が含まれている場合、大文字と小文字を区別する
+"set smartcase
+
+"検索時、最後まで行ったら最初に戻る
+"set wrapscan
+
 
 "--- File ---
 "バックアップファイルを作成しない
@@ -72,4 +90,3 @@ inoremap jj <Esc>
 
 "ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
