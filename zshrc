@@ -15,6 +15,7 @@ alias ll='ls -lF'
 alias lla='ls -lAF'
 alias la='ls -A'
 alias l='ls -CF'
+
 export PATH="$HOME/.local/bin:$PATH"
 
 #export NVM_DIR="$HOME/.nvm"
@@ -23,3 +24,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/mac4/.antigravity/antigravity/bin:$PATH"
+
