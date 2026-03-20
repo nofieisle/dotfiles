@@ -1,3 +1,7 @@
+if [[ "$PWD" == "$HOME" ]]; then
+  cd ~/workspace
+fi
+
 ### Prompt ###
 git_info() {
   command git rev-parse --is-inside-work-tree &>/dev/null || return
@@ -19,9 +23,12 @@ alias cdw='cd workspace/'
 
 export PATH="$HOME/.local/bin:$PATH"
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+nvm() {
+  unset -f nvm
+  . "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
 
 # Added by Antigravity
 export PATH="/Users/mac4/.antigravity/antigravity/bin:$PATH"
