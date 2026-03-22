@@ -11,15 +11,18 @@ git_info() {
 setopt PROMPT_SUBST
 PROMPT='🐱 %F{yellow}%~%f$(git_info) %# '
 
-### disable START/STOP control ###
+### Disable START/STOP control ###
 stty -ixon
 
-### alias ###
+### Alias ###
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ll='ls -lF'
 alias lla='ls -lAF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cdw='cd workspace/'
+alias cdw='cd ~/workspace'
 
 export PATH="$HOME/.local/bin:$PATH"
 
