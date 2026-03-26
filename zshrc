@@ -23,6 +23,7 @@ alias lla='ls -lAF'
 alias la='ls -A'
 alias l='ls -CF'
 alias cdw='cd ~/workspace'
+alias home='cd ~/workspace/_nb/home'
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -33,5 +34,10 @@ nvm() {
   nvm "$@"
 }
 
-# Added by Antigravity
+### Added by Antigravity
 export PATH="/Users/mac4/.antigravity/antigravity/bin:$PATH"
+
+### fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
