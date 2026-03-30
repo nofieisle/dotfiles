@@ -26,6 +26,7 @@ alias l='ls -CF'
 alias dot='cd ~/.dotfiles'
 alias works='cd ~/workspace'
 alias note='cd ~/workspace/_note'
+alias cnote='code ~/workspace/_note'
 
 export PATH="$HOME/.local/bin:$PATH"
 

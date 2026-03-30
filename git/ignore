@@ -6,14 +6,21 @@ Thumbs.db
 ## Secrets / local config
 .env
 .env.*
+*.key
+*.secret
 *.local
 **/.claude/settings.local.json
 
 ## Temporary / backup
 *.log
 
+## Editor
+*.swp
+*.swo
+
 ## Dependencies
 node_modules/
+*.zip
 
 ## --- Personal files ---
 _MYNOTE.md

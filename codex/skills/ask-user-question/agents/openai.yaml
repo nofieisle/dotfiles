@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ask User Question"
+  short_description: "Structured requirements interview skill"
+  default_prompt: "Use $ask-user-question to ask one structured requirements question at a time with clear options and tradeoffs."
