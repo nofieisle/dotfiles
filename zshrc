@@ -1,3 +1,4 @@
+### Default working directory
 if [[ "$PWD" == "$HOME" ]]; then
   cd ~/workspace
 fi
@@ -22,12 +23,13 @@ alias ll='ls -lF'
 alias lla='ls -lAF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cdw='cd ~/workspace'
-alias home='cd ~/workspace/_nb/home'
-alias dft='cd ~/workspace/_nb/home/draft'
+alias dot='cd ~/.dotfiles'
+alias works='cd ~/workspace'
+alias note='cd ~/workspace/_note'
 
 export PATH="$HOME/.local/bin:$PATH"
 
+### nvm
 export NVM_DIR="$HOME/.nvm"
 nvm() {
   unset -f nvm
@@ -40,5 +42,4 @@ export PATH="/Users/mac4/.antigravity/antigravity/bin:$PATH"
 
 ### fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
