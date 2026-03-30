@@ -24,6 +24,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias cdw='cd ~/workspace'
 alias home='cd ~/workspace/_nb/home'
+alias dft='cd ~/workspace/_nb/home/draft'
 
 export PATH="$HOME/.local/bin:$PATH"
 

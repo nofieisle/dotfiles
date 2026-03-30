@@ -18,7 +18,7 @@ highlight lineNr ctermfg=8
 set cursorline
 
 "折り返し表示
-set nowrap
+"set nowrap
 
 "対応する括弧を表示
 set showmatch
